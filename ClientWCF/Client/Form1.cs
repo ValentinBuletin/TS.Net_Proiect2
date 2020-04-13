@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             openFileDialog1.Filter = "Supported Formats|" + extensions;
         }
 
-        private void Message(string file)
+        private void message(string file)
         {
             string message = "The file: \n" + file + "\nIs not available anymore!\nPerhaps it has been moved?!\nDo you want to select it's new " +
                 "path (YES) or delete the entry (NO) ?";
@@ -73,7 +73,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void CheckFiles()
+        private void checkFiles()
         {
             try
             {
@@ -84,7 +84,7 @@ namespace WindowsFormsApp1
                     {
                         if (!File.Exists(path[i]))
                         {
-                            Message(path[i]);
+                            message(path[i]);
                         }
                     }
                 }
@@ -95,7 +95,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void Display(List<string> result)
+        private void display(List<string> result)
         {
             string tmp = "";
             foreach (var line in result)
@@ -106,9 +106,9 @@ namespace WindowsFormsApp1
             textBox2.Text = tmp;
         }
 
-        private void Form1Load(object sender, EventArgs e)
+        private void form1Load(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             List<string> columns = client.Columns();
             columns.RemoveRange(0, 8);
 
@@ -128,7 +128,7 @@ namespace WindowsFormsApp1
             textBox4.Text = "";
         }
 
-        private void LoadPicture(string path)
+        private void loadPicture(string path)
         {
             if (File.Exists(currentFile))
                 try
@@ -146,26 +146,26 @@ namespace WindowsFormsApp1
                 }
         }
 
-        private void TextBox5MouseHover(object sender, EventArgs e)
+        private void textBox5MouseHover(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             toolTip1.SetToolTip(textBox5, textBox5.Text);
         }
 
-        private void SelectFile(object sender, EventArgs e)
+        private void selectFile(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             allFiles.Clear();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 currentFile = openFileDialog1.FileName;
-                LoadPicture(currentFile);
+                loadPicture(currentFile);
             }
         }
-		
-		private void SelectFolder(object sender, EventArgs e)
+
+        private void selectFolder(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 string path = folderBrowserDialog1.SelectedPath;
@@ -184,7 +184,7 @@ namespace WindowsFormsApp1
                     index = 0;
                     currentFile = allFiles[index];
                     if (File.Exists(currentFile))
-                        LoadPicture(currentFile);
+                        loadPicture(currentFile);
                 }
                 else
                 {
@@ -193,9 +193,9 @@ namespace WindowsFormsApp1
             }
         }
 		
-        private void InsertFile(object sender, EventArgs e)
+        private void insertFile(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (currentFile != null)
             {
                 try
@@ -207,7 +207,7 @@ namespace WindowsFormsApp1
                     if (insert == false && all == false)
                         MessageBox.Show("The picture/video \"" + name[0] + "\" is already in the database.");
 
-                    MyUpdate();
+                    myUpdate();
 
                 }
                 catch (Exception ex)
@@ -221,9 +221,9 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void RemoveFile(object sender, EventArgs e)
+        private void removeFile(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (currentFile != null)
             {
                 string message = "Are you sure you want to REMOVE the displayed picture/video from the database?!";
@@ -231,14 +231,14 @@ namespace WindowsFormsApp1
                 if (result == DialogResult.Yes)
                 {
                     client.Delete("Full_Path", currentFile);
-                    MyUpdate();
+                    myUpdate();
                 }
             }
         }
 
-        private void Clear(object sender, EventArgs e)
+        private void clear(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             allFiles.Clear();
             index = 0;
             currentFile = null;
@@ -251,15 +251,15 @@ namespace WindowsFormsApp1
             textBox4.Text = "";
         }
 
-        private void ComboBox3MouseHover(object sender, EventArgs e)
+        private void comboBox3MouseHover(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             toolTip1.SetToolTip(comboBox3, comboBox3.Text);
         }
 
-        private void RemoveTag(object sender, EventArgs e)
+        private void removeTag(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (comboBox3.Text != "")
             {
                 string message = "Are you sure you want to REMOVE the column \"" + comboBox3.Text + "\" from the table?\n" +
@@ -269,45 +269,45 @@ namespace WindowsFormsApp1
                 {
                     client.Remove(comboBox3.Text);
 
-                    Form1Load(sender, e);
-                    MyUpdate();
+                    form1Load(sender, e);
+                    myUpdate();
                 }
             }
         }
 
-        private void TextBox4MouseHover(object sender, EventArgs e)
+        private void textBox4MouseHover(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             toolTip1.SetToolTip(textBox4, textBox4.Text);
         }
 
-        private void AddTag(object sender, EventArgs e)
+        private void addTag(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (textBox4.Text != "")
             {
                 client.Add(textBox4.Text);
 
-                Form1Load(sender, e);
-                MyUpdate();
+                form1Load(sender, e);
+                myUpdate();
             }
         }
 
-        private void ComboBox1MouseHover(object sender, EventArgs e)
+        private void comboBox1MouseHover(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             toolTip1.SetToolTip(comboBox1, comboBox1.Text);
         }
 
-        private void TextBox1MouseHover(object sender, EventArgs e)
+        private void textBox1MouseHover(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             toolTip1.SetToolTip(textBox1, textBox1.Text);
         }
 
-        private void Search(object sender, EventArgs e)
+        private void search(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (comboBox1.Text.Equals("[Show All]"))
             {
                 allFiles = client.Check("Full_Path", false);
@@ -320,37 +320,37 @@ namespace WindowsFormsApp1
             index = 0;
             currentFile = allFiles[index];
             if (File.Exists(currentFile))
-                LoadPicture(currentFile);
+                loadPicture(currentFile);
             else
             {
                 pictureBox1.Image = null;
                 textBox5.Visible = false;
             }
 
-            MyUpdate();
+            myUpdate();
         }
 
-        private void ComboBox2MouseHover(object sender, EventArgs e)
+        private void comboBox2MouseHover(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             toolTip1.SetToolTip(comboBox2, comboBox2.Text);
         }
 
-        private void TextBox3MouseHover(object sender, EventArgs e)
+        private void textBox3MouseHover(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             toolTip1.SetToolTip(textBox3, textBox3.Text);
         }
 
-        private void Modify(object sender, EventArgs e)
+        private void modify(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (textBox1.Text == "")
             {
                 if (currentFile != null)
                 {
                     client.Modify(comboBox2.Text, textBox3.Text, "Full_Path", currentFile);
-                    MyUpdate();
+                    myUpdate();
                 }
             }
             else
@@ -363,14 +363,14 @@ namespace WindowsFormsApp1
                 {
                     client.Modify(comboBox2.Text, textBox3.Text, comboBox1.Text, textBox1.Text);
                     textBox2.Text = "";
-                    Search(sender, e);
+                    search(sender, e);
                 }
             }
         }
 
-        private void Previous(object sender, EventArgs e)
+        private void previous(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (allFiles.Count() > 1)
             {
                 index--;
@@ -378,19 +378,19 @@ namespace WindowsFormsApp1
                     index = allFiles.Count() - 1;
                 currentFile = allFiles[index];
                 if (File.Exists(currentFile))
-                    LoadPicture(currentFile);
+                    loadPicture(currentFile);
                 else
                 {
                     allFiles.RemoveAt(index);
                     index--;
-                    Next(sender, e);
+                    next(sender, e);
                 }
             }
         }
 
-        private void Next(object sender, EventArgs e)
+        private void next(object sender, EventArgs e)
         {
-            CheckFiles();
+            checkFiles();
             if (allFiles.Count() > 1)
             {
                 index++;
@@ -398,31 +398,31 @@ namespace WindowsFormsApp1
                     index = 0;
                 currentFile = allFiles[index];
                 if (File.Exists(currentFile))
-                    LoadPicture(currentFile);
+                    loadPicture(currentFile);
                 else
                 {
                     allFiles.RemoveAt(index);
                     index--;
-                    Next(sender, e);
+                    next(sender, e);
                 }
             }
         }
 
-        private void PictureBox1Paint(object sender, PaintEventArgs e)
+        private void pictureBox1Paint(object sender, PaintEventArgs e)
         {
-            MyUpdate();
+            myUpdate();
         }
 
-        private void MyUpdate()
+        private void myUpdate()
         {
             if (currentFile != null)
             {
                 List<string> result = client.Search("Full_Path", currentFile);
-                Display(result);
+                display(result);
             }
         }
 
-        private void InsertAll(object sender, EventArgs e)
+        private void insertAll(object sender, EventArgs e)
         {
             all = true;
             if (allFiles.Count > 0)
@@ -431,9 +431,9 @@ namespace WindowsFormsApp1
                 {
                     if (File.Exists(pic))
                     {
-                        LoadPicture(pic);
+                        loadPicture(pic);
                         currentFile = pic;
-                        InsertFile(sender, e);
+                        insertFile(sender, e);
                     }
                 }
                 index = allFiles.Count() - 1;
@@ -446,11 +446,11 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void TextBox5VisibleChanged(object sender, EventArgs e)
+        private void textBox5VisibleChanged(object sender, EventArgs e)
         {
             if (textBox5.Visible == true)
             {
-                MyUpdate();
+                myUpdate();
             }
         }
     }

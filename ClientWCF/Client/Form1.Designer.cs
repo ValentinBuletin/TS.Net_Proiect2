@@ -68,7 +68,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "SELECT FILE";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.SelectFile);
+            this.button1.Click += new System.EventHandler(this.selectFile);
             // 
             // openFileDialog1
             // 
@@ -83,7 +83,7 @@
             this.textBox1.Size = new System.Drawing.Size(360, 31);
             this.textBox1.TabIndex = 1;
             this.textBox1.WordWrap = false;
-            this.textBox1.MouseHover += new System.EventHandler(this.TextBox1MouseHover);
+            this.textBox1.MouseHover += new System.EventHandler(this.textBox1MouseHover);
             // 
             // button2
             // 
@@ -97,7 +97,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "SEARCH";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Search);
+            this.button2.Click += new System.EventHandler(this.search);
             // 
             // comboBox1
             // 
@@ -110,7 +110,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(116, 30);
             this.comboBox1.TabIndex = 3;
-            this.comboBox1.MouseHover += new System.EventHandler(this.ComboBox1MouseHover);
+            this.comboBox1.MouseHover += new System.EventHandler(this.comboBox1MouseHover);
             // 
             // textBox2
             // 
@@ -139,7 +139,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "MODIFY";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.Modify);
+            this.button3.Click += new System.EventHandler(this.modify);
             // 
             // button4
             // 
@@ -153,7 +153,7 @@
             this.button4.TabIndex = 6;
             this.button4.Text = "SELECT FOLDER";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.SelectFolder);
+            this.button4.Click += new System.EventHandler(this.selectFolder);
             // 
             // comboBox2
             // 
@@ -166,7 +166,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(116, 30);
             this.comboBox2.TabIndex = 7;
-            this.comboBox2.MouseHover += new System.EventHandler(this.ComboBox2MouseHover);
+            this.comboBox2.MouseHover += new System.EventHandler(this.comboBox2MouseHover);
             // 
             // textBox3
             // 
@@ -176,7 +176,7 @@
             this.textBox3.Size = new System.Drawing.Size(360, 31);
             this.textBox3.TabIndex = 8;
             this.textBox3.WordWrap = false;
-            this.textBox3.MouseHover += new System.EventHandler(this.TextBox3MouseHover);
+            this.textBox3.MouseHover += new System.EventHandler(this.textBox3MouseHover);
             // 
             // button5
             // 
@@ -190,7 +190,7 @@
             this.button5.TabIndex = 9;
             this.button5.Text = "ADD TAG";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.AddTag);
+            this.button5.Click += new System.EventHandler(this.addTag);
             // 
             // button7
             // 
@@ -204,7 +204,7 @@
             this.button7.TabIndex = 11;
             this.button7.Text = "REMOVE TAG";
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.RemoveTag);
+            this.button7.Click += new System.EventHandler(this.removeTag);
             // 
             // pictureBox1
             // 
@@ -214,7 +214,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBox1Paint);
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1Paint);
             // 
             // comboBox3
             // 
@@ -227,7 +227,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(116, 30);
             this.comboBox3.TabIndex = 13;
-            this.comboBox3.MouseHover += new System.EventHandler(this.ComboBox3MouseHover);
+            this.comboBox3.MouseHover += new System.EventHandler(this.comboBox3MouseHover);
             // 
             // textBox4
             // 
@@ -237,7 +237,7 @@
             this.textBox4.Size = new System.Drawing.Size(238, 31);
             this.textBox4.TabIndex = 14;
             this.textBox4.WordWrap = false;
-            this.textBox4.MouseHover += new System.EventHandler(this.TextBox4MouseHover);
+            this.textBox4.MouseHover += new System.EventHandler(this.textBox4MouseHover);
             // 
             // button6
             // 
@@ -251,7 +251,7 @@
             this.button6.TabIndex = 15;
             this.button6.Text = "CLEAR";
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.Clear);
+            this.button6.Click += new System.EventHandler(this.clear);
             // 
             // button8
             // 
@@ -265,7 +265,7 @@
             this.button8.TabIndex = 0;
             this.button8.Text = "REMOVE FILE";
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.RemoveFile);
+            this.button8.Click += new System.EventHandler(this.removeFile);
             // 
             // button9
             // 
@@ -279,7 +279,7 @@
             this.button9.TabIndex = 17;
             this.button9.Text = "<-";
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.Previous);
+            this.button9.Click += new System.EventHandler(this.previous);
             // 
             // button10
             // 
@@ -293,7 +293,7 @@
             this.button10.TabIndex = 18;
             this.button10.Text = "->";
             this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.Next);
+            this.button10.Click += new System.EventHandler(this.next);
             // 
             // button11
             // 
@@ -307,7 +307,7 @@
             this.button11.TabIndex = 19;
             this.button11.Text = "INSERT FILE";
             this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.InsertFile);
+            this.button11.Click += new System.EventHandler(this.insertFile);
             // 
             // button12
             // 
@@ -321,7 +321,7 @@
             this.button12.TabIndex = 20;
             this.button12.Text = "INSERT ALL";
             this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.InsertAll);
+            this.button12.Click += new System.EventHandler(this.insertAll);
             // 
             // textBox5
             // 
@@ -333,8 +333,8 @@
             this.textBox5.TabIndex = 22;
             this.textBox5.Visible = false;
             this.textBox5.WordWrap = false;
-            this.textBox5.VisibleChanged += new System.EventHandler(this.TextBox5VisibleChanged);
-            this.textBox5.MouseHover += new System.EventHandler(this.TextBox5MouseHover);
+            this.textBox5.VisibleChanged += new System.EventHandler(this.textBox5VisibleChanged);
+            this.textBox5.MouseHover += new System.EventHandler(this.textBox5MouseHover);
             // 
             // Form1
             // 
@@ -367,7 +367,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Photo Classifier";
-            this.Load += new System.EventHandler(this.Form1Load);
+            this.Load += new System.EventHandler(this.form1Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

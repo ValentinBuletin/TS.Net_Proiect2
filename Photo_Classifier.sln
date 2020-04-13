@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{00420BAD-EAB9-417E-9B82-822501C6D336}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api+Model", "ClassLibrary1\Api+Model.csproj", "{00420BAD-EAB9-417E-9B82-822501C6D336}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectWCF", "ObjectWCF\ObjectWCF.csproj", "{B527044E-1419-4E57-998C-4DC5AD8A7897}"
 EndProject

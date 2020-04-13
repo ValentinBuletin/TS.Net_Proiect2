@@ -51,15 +51,25 @@ namespace ClassLibrary1
                 {
                     var ind = context.Tags;
                     var values = x.Values.Split(',');
+
+                    int index = 0;
+                    Dictionary<int, int> dict = new Dictionary<int, int>();
+                    foreach (var y in ind)
+                    {
+                        dict.Add(y.Tag_Id, index);
+                        index += 1;
+                    }
+
                     foreach (var y in ind)
                     {
                         if (column.Equals(y.Tag_Name))
                         {
-                            values[y.Tag_Id] = "null";
+                            values[dict[y.Tag_Id]] = "TEST!!!PHRASE";
                             var sir = "";
                             foreach (var b in values)
                             {
-                                sir += b + ",";
+                                if (!b.Equals("TEST!!!PHRASE"))
+                                    sir += b + ",";
                             }
                             x.Values = sir;
                             context.Tags.Remove(y);
@@ -82,32 +92,7 @@ namespace ClassLibrary1
 
                 foreach (var x in items)
                 {
-                    if (where.Equals("Name") && x.Name == whereValue)
-                    {
-                        context.Pics_Vids.Remove(x);
-                        row++;
-                    }
-                    else if (where.Equals("Full_Path") && x.Full_Path == whereValue)
-                    {
-                        context.Pics_Vids.Remove(x);
-                        row++;
-                    }
-                    else if (where.Equals("Type") && x.Type == whereValue)
-                    {
-                        context.Pics_Vids.Remove(x);
-                        row++;
-                    }
-                    else if (where.Equals("Size") && x.Size.ToString() == whereValue)
-                    {
-                        context.Pics_Vids.Remove(x);
-                        row++;
-                    }
-                    else if (where.Equals("Date_Created") && x.Date_Created.ToString() == whereValue)
-                    {
-                        context.Pics_Vids.Remove(x);
-                        row++;
-                    }
-                    else if (where.Equals("Date_Modified") && x.Date_Modified.ToString() == whereValue)
+                    if (where.Equals("Full_Path") && x.Full_Path == whereValue)
                     {
                         context.Pics_Vids.Remove(x);
                         row++;
@@ -115,9 +100,18 @@ namespace ClassLibrary1
 
                     var ind = context.Tags;
                     var values = x.Values.Split(',');
+
+                    int index = 0;
+                    Dictionary<int, int> dict = new Dictionary<int, int>();
                     foreach (var y in ind)
                     {
-                        if (where.Equals(y.Tag_Name) && whereValue == values[y.Tag_Id])
+                        dict.Add(y.Tag_Id, index);
+                        index += 1;
+                    }
+
+                    foreach (var y in ind)
+                    {
+                        if (where.Equals(y.Tag_Name) && whereValue == values[dict[y.Tag_Id]])
                         {
                             context.Pics_Vids.Remove(x);
                             row++;
@@ -160,6 +154,7 @@ namespace ClassLibrary1
             return query;
         }
 
+        #region Modify
         /// <summary>Modifies all the values that match a search.</summary>
         /// <param name="set">The name of the column to be modified.</param>
         /// <param name="setValue">The value to be modified.</param>
@@ -180,22 +175,24 @@ namespace ClassLibrary1
                                 x.Name = setValue;
                             else if (set.Equals("Full_Path"))
                                 x.Full_Path = setValue;
-                            else if (set.Equals("Type"))
-                                x.Type = setValue;
-                            else if (set.Equals("Size"))
-                                x.Size = Convert.ToDouble(setValue);
-                            else if (set.Equals("Date_Created"))
-                                x.Date_Created = Convert.ToDateTime(setValue);
-                            else if (set.Equals("Date_Modified"))
-                                x.Date_Modified = Convert.ToDateTime(setValue);
+                            x.Date_Modified = DateTime.Now;
 
                             var ind2 = context.Tags;
                             var values2 = x.Values.Split(',');
+
+                            int index = 0;
+                            Dictionary<int, int> dict = new Dictionary<int, int>();
+                            foreach (var a in ind2)
+                            {
+                                dict.Add(a.Tag_Id, index);
+                                index += 1;
+                            }
+
                             foreach (var a in ind2)
                             {
                                 if (set.Equals(a.Tag_Name))
                                 {
-                                    values2[a.Tag_Id] = setValue;
+                                    values2[dict[a.Tag_Id]] = setValue;
                                     var sir = "";
                                     foreach (var b in values2)
                                     {
@@ -211,22 +208,24 @@ namespace ClassLibrary1
                                 x.Name = setValue;
                             else if (set.Equals("Full_Path"))
                                 x.Full_Path = setValue;
-                            else if (set.Equals("Type"))
-                                x.Type = setValue;
-                            else if (set.Equals("Size"))
-                                x.Size = Convert.ToDouble(setValue);
-                            else if (set.Equals("Date_Created"))
-                                x.Date_Created = Convert.ToDateTime(setValue);
-                            else if (set.Equals("Date_Modified"))
-                                x.Date_Modified = Convert.ToDateTime(setValue);
+                            x.Date_Modified = DateTime.Now;
 
                             var ind2 = context.Tags;
                             var values2 = x.Values.Split(',');
+
+                            int index = 0;
+                            Dictionary<int, int> dict = new Dictionary<int, int>();
+                            foreach (var a in ind2)
+                            {
+                                dict.Add(a.Tag_Id, index);
+                                index += 1;
+                            }
+
                             foreach (var a in ind2)
                             {
                                 if (set.Equals(a.Tag_Name))
                                 {
-                                    values2[a.Tag_Id] = setValue;
+                                    values2[dict[a.Tag_Id]] = setValue;
                                     var sir = "";
                                     foreach (var b in values2)
                                     {
@@ -242,22 +241,24 @@ namespace ClassLibrary1
                                 x.Name = setValue;
                             else if (set.Equals("Full_Path"))
                                 x.Full_Path = setValue;
-                            else if (set.Equals("Type"))
-                                x.Type = setValue;
-                            else if (set.Equals("Size"))
-                                x.Size = Convert.ToDouble(setValue);
-                            else if (set.Equals("Date_Created"))
-                                x.Date_Created = Convert.ToDateTime(setValue);
-                            else if (set.Equals("Date_Modified"))
-                                x.Date_Modified = Convert.ToDateTime(setValue);
+                            x.Date_Modified = DateTime.Now;
 
                             var ind2 = context.Tags;
                             var values2 = x.Values.Split(',');
+
+                            int index = 0;
+                            Dictionary<int, int> dict = new Dictionary<int, int>();
+                            foreach (var a in ind2)
+                            {
+                                dict.Add(a.Tag_Id, index);
+                                index += 1;
+                            }
+
                             foreach (var a in ind2)
                             {
                                 if (set.Equals(a.Tag_Name))
                                 {
-                                    values2[a.Tag_Id] = setValue;
+                                    values2[dict[a.Tag_Id]] = setValue;
                                     var sir = "";
                                     foreach (var b in values2)
                                     {
@@ -273,22 +274,24 @@ namespace ClassLibrary1
                                 x.Name = setValue;
                             else if (set.Equals("Full_Path"))
                                 x.Full_Path = setValue;
-                            else if (set.Equals("Type"))
-                                x.Type = setValue;
-                            else if (set.Equals("Size"))
-                                x.Size = Convert.ToDouble(setValue);
-                            else if (set.Equals("Date_Created"))
-                                x.Date_Created = Convert.ToDateTime(setValue);
-                            else if (set.Equals("Date_Modified"))
-                                x.Date_Modified = Convert.ToDateTime(setValue);
+                            x.Date_Modified = DateTime.Now;
 
                             var ind2 = context.Tags;
                             var values2 = x.Values.Split(',');
+
+                            int index = 0;
+                            Dictionary<int, int> dict = new Dictionary<int, int>();
+                            foreach (var a in ind2)
+                            {
+                                dict.Add(a.Tag_Id, index);
+                                index += 1;
+                            }
+
                             foreach (var a in ind2)
                             {
                                 if (set.Equals(a.Tag_Name))
                                 {
-                                    values2[a.Tag_Id] = setValue;
+                                    values2[dict[a.Tag_Id]] = setValue;
                                     var sir = "";
                                     foreach (var b in values2)
                                     {
@@ -304,21 +307,24 @@ namespace ClassLibrary1
                                 x.Name = setValue;
                             else if (set.Equals("Full_Path"))
                                 x.Full_Path = setValue;
-                            else if (set.Equals("Type"))
-                                x.Type = setValue;
-                            else if (set.Equals("Size"))
-                                x.Size = Convert.ToDouble(setValue);
-                            else if (set.Equals("Date_Created"))
-                                x.Date_Created = Convert.ToDateTime(setValue);
-                            else if (set.Equals("Date_Modified"))
-                                x.Date_Modified = Convert.ToDateTime(setValue);
+                            x.Date_Modified = DateTime.Now;
+
                             var ind2 = context.Tags;
                             var values2 = x.Values.Split(',');
+
+                            int index = 0;
+                            Dictionary<int, int> dict = new Dictionary<int, int>();
+                            foreach (var a in ind2)
+                            {
+                                dict.Add(a.Tag_Id, index);
+                                index += 1;
+                            }
+
                             foreach (var a in ind2)
                             {
                                 if (set.Equals(a.Tag_Name))
                                 {
-                                    values2[a.Tag_Id] = setValue;
+                                    values2[dict[a.Tag_Id]] = setValue;
                                     var sir = "";
                                     foreach (var b in values2)
                                     {
@@ -334,22 +340,24 @@ namespace ClassLibrary1
                                 x.Name = setValue;
                             else if (set.Equals("Full_Path"))
                                 x.Full_Path = setValue;
-                            else if (set.Equals("Type"))
-                                x.Type = setValue;
-                            else if (set.Equals("Size"))
-                                x.Size = Convert.ToDouble(setValue);
-                            else if (set.Equals("Date_Created"))
-                                x.Date_Created = Convert.ToDateTime(setValue);
-                            else if (set.Equals("Date_Modified"))
-                                x.Date_Modified = Convert.ToDateTime(setValue);
+                            x.Date_Modified = DateTime.Now;
 
                             var ind2 = context.Tags;
                             var values2 = x.Values.Split(',');
-                            foreach(var a in ind2)
+
+                            int index = 0;
+                            Dictionary<int, int> dict = new Dictionary<int, int>();
+                            foreach (var a in ind2)
+                            {
+                                dict.Add(a.Tag_Id, index);
+                                index += 1;
+                            }
+
+                            foreach (var a in ind2)
                             {
                                 if (set.Equals(a.Tag_Name))
                                 {
-                                    values2[a.Tag_Id] = setValue;
+                                    values2[dict[a.Tag_Id]] = setValue;
                                     var sir = "";
                                     foreach (var b in values2)
                                     {
@@ -362,35 +370,47 @@ namespace ClassLibrary1
 
                         var ind = context.Tags;
                         var values = x.Values.Split(',');
+
+                        int index2 = 0;
+                        Dictionary<int, int> dict2 = new Dictionary<int, int>();
                         foreach (var y in ind)
                         {
-                            if(where.Equals(y.Tag_Name) && x.Values[y.Tag_Id].ToString() == whereValue)
+                            dict2.Add(y.Tag_Id, index2);
+                            index2 += 1;
+                        }
+
+                        foreach (var y in ind)
+                        {
+                            if(where.Equals(y.Tag_Name) && values[dict2[y.Tag_Id]].ToString() == whereValue)
                             {
                                 if (set.Equals("Name"))
                                     x.Name = setValue;
                                 else if (set.Equals("Full_Path"))
                                     x.Full_Path = setValue;
-                                else if (set.Equals("Type"))
-                                    x.Type = setValue;
-                                else if (set.Equals("Size"))
-                                    x.Size = Convert.ToDouble(setValue);
-                                else if (set.Equals("Date_Created"))
-                                    x.Date_Created = Convert.ToDateTime(setValue);
-                                else if (set.Equals("Date_Modified"))
-                                    x.Date_Modified = Convert.ToDateTime(setValue);
+                                x.Date_Modified = DateTime.Now;
 
                                 var ind2 = context.Tags;
                                 var values2 = x.Values.Split(',');
+
+                                int index = 0;
+                                Dictionary<int, int> dict = new Dictionary<int, int>();
+                                foreach (var a in ind2)
+                                {
+                                    dict.Add(a.Tag_Id, index);
+                                    index += 1;
+                                }
+
                                 foreach (var a in ind2)
                                 {
                                     if (set.Equals(a.Tag_Name))
                                     {
-                                        values2[a.Tag_Id] = setValue;
+                                        values2[dict[a.Tag_Id]] = setValue;
                                         var sir = "";
                                         foreach (var b in values2)
                                         {
                                             sir += b + ",";
                                         }
+                                        Console.WriteLine(sir);
                                         x.Values = sir;
                                     }
                                 }
@@ -407,7 +427,9 @@ namespace ClassLibrary1
                 
             }
         }
+        #endregion
 
+        #region SearchPath
         /// <summary>Searches for the "Full_Path" after a criteria.</summary>
         /// <param name="column">The name of the column to be seached.</param>
         /// <param name="text">The value to be searched.</param>
@@ -448,11 +470,23 @@ namespace ClassLibrary1
 
                     var ind = context.Tags;
                     var values = x.Values.Split(',');
-                    foreach ( var y in ind)
+
+                    int index = 0;
+                    Dictionary<int, int> dict = new Dictionary<int, int>();
+                    foreach (var y in ind)
                     {
-                        if(column == y.Tag_Name && text == values[y.Tag_Id])
+                        dict.Add(y.Tag_Id, index);
+                        index += 1;
+                    }
+
+                    foreach ( var y in ind)
+                    {                        
+                        if (column == y.Tag_Name)
                         {
-                            query.Add(x.Full_Path);
+                            if(text == values[dict[y.Tag_Id]])
+                            {
+                                query.Add(x.Full_Path);
+                            }
                         }
                     }
                 }
@@ -462,6 +496,7 @@ namespace ClassLibrary1
                 query.Add("NOTHING WAS FOUND!");
             return query;
         }
+        #endregion
 
         /// <summary>Searches after a criteria.</summary>
         /// <param name="column">The name of the column to be seached.</param>
@@ -487,10 +522,13 @@ namespace ClassLibrary1
 
                         var ind = context.Tags;
                         var values = x.Values.Split(',');
+
+                        int index = 0;
                         foreach (var y in ind)
                         {
                             var sir = y.Tag_Name.ToString() + ":\t";
-                            sir += values[y.Tag_Id];
+                            sir += values[index];
+                            index += 1;
                             query.Add(sir);
                         }
                         query.Add(Environment.NewLine);
@@ -502,7 +540,7 @@ namespace ClassLibrary1
             return query;
         }
 
-        /// <summary>Searches for the columns of the table "Pics_Vids".</summary>
+        /// <summary>Searches for the columns of the table "Pics_Vids and Tags".</summary>
         /// <returns>A List of strings with names of the columns.</returns>
         public static List<string> Columns()
         {
@@ -519,7 +557,7 @@ namespace ClassLibrary1
             return tmp;
         }
 
-        private static bool Select(string fullPath)
+        private static bool select(string fullPath)
         {
             bool found = false;
             using (Model1Container context = new Model1Container())
@@ -545,20 +583,15 @@ namespace ClassLibrary1
         public static bool Insert(string name, string fullPath, string type, double size, DateTime dateCreated)
         {
 
-            if (Select(fullPath) == false)
+            if (select(fullPath) == false)
             {
                 using (Model1Container context = new Model1Container())
                 {
                     string values = "";
-                    int maxim = 0;
-                    var ceva = context.Tags;
-                    foreach(var x in ceva)
-                    {
-                        if (x.Tag_Id > maxim)
-                            maxim = x.Tag_Id;
-                    }
+                    int index = context.Tags.ToList<Tag>().Count();
+                    
 
-                    for (int i = 0; i<=maxim;i++)
+                    for (int i = 0; i<=index;i++)
                     {
                         values += "null,";
                     }
